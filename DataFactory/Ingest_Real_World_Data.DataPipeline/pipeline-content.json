@@ -1,0 +1,78 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "name": "Injest_Sales_data",
+        "type": "Copy",
+        "dependsOn": [],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "source": {
+            "type": "JsonSource",
+            "storeSettings": {
+              "type": "HttpReadSettings",
+              "requestMethod": "GET"
+            },
+            "formatSettings": {
+              "type": "JsonReadSettings"
+            },
+            "datasetSettings": {
+              "annotations": [],
+              "type": "Json",
+              "typeProperties": {
+                "location": {
+                  "type": "HttpServerLocation",
+                  "relativeUrl": "/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1"
+                }
+              },
+              "schema": {},
+              "externalReferences": {
+                "connection": "e8c62cf1-5442-43eb-a946-7531d54e00aa"
+              }
+            }
+          },
+          "sink": {
+            "type": "JsonSink",
+            "storeSettings": {
+              "type": "AzureBlobFSWriteSettings",
+              "maxConcurrentConnections": 4,
+              "copyBehavior": "MergeFiles",
+              "metadata": [
+                {
+                  "name": "Source",
+                  "value": "CoinGecko API (for Sales Data)"
+                }
+              ]
+            },
+            "formatSettings": {
+              "type": "JsonWriteSettings"
+            },
+            "datasetSettings": {
+              "annotations": [],
+              "type": "Json",
+              "typeProperties": {
+                "location": {
+                  "type": "AzureBlobFSLocation",
+                  "fileName": "sales_data.json",
+                  "folderPath": "/Raw Data/Sales",
+                  "fileSystem": "filesystem1"
+                }
+              },
+              "schema": {},
+              "externalReferences": {
+                "connection": "f371011c-a4b7-4839-a9b3-16e3fa736425"
+              }
+            }
+          },
+          "enableStaging": false
+        }
+      }
+    ]
+  }
+}
