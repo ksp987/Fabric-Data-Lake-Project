@@ -4,6 +4,8 @@
       {
         "name": "Injest_Sales_data",
         "type": "Copy",
+        "state": "Inactive",
+        "onInactiveMarkAs": "Succeeded",
         "dependsOn": [],
         "policy": {
           "timeout": "0.12:00:00",
@@ -88,6 +90,24 @@
         },
         "typeProperties": {
           "enableStaging": false
+        }
+      },
+      {
+        "name": "CoinDataflow",
+        "type": "RefreshDataflow",
+        "dependsOn": [],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "dataflowId": "8f11b3ef-697a-47d0-bdd2-b6b4dbbc0324",
+          "workspaceId": "ce93347d-b2ec-43a6-b193-8736ba31b93e",
+          "notifyOption": "NoNotification",
+          "dataflowType": "DataflowFabric"
         }
       }
     ]

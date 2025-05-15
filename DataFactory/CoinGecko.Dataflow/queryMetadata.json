@@ -1,0 +1,38 @@
+{
+  "formatVersion": "202502",
+  "computeEngineSettings": {},
+  "name": "CoinGecko",
+  "queryGroups": [],
+  "documentLocale": "en-US",
+  "queriesMetadata": {
+    "DefaultDestination": {
+      "queryId": "38b2ef7d-85df-405b-b3c2-5eeb49c439d8",
+      "queryName": "DefaultDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "Query": {
+      "queryId": "66ada9d3-7cd1-4d3d-b9e7-2bd2fe45d68d",
+      "queryName": "Query",
+      "loadEnabled": false
+    },
+    "Query_DataDestination": {
+      "queryId": "80432630-f42a-4dd7-a8bf-f0f325b02d91",
+      "queryName": "Query_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    }
+  },
+  "connections": [
+    {
+      "path": "Lakehouse",
+      "kind": "Lakehouse",
+      "connectionId": "{\"ClusterId\":\"a9c4bb37-e7ee-41cd-9b30-fb4f7bf94727\",\"DatasourceId\":\"a8b9df8a-6784-4b82-abf0-20915dffba42\"}"
+    },
+    {
+      "path": "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_",
+      "kind": "Web",
+      "connectionId": "{\"ClusterId\":\"a9c4bb37-e7ee-41cd-9b30-fb4f7bf94727\",\"DatasourceId\":\"68ce1b66-f3bd-4dd2-bfc4-c2243172116b\"}"
+    }
+  ]
+}

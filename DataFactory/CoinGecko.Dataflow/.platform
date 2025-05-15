@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Dataflow",
+    "displayName": "CoinGecko"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "dbbc0324-b6b4-bdd2-47d0-697a8f11b3ef"
+  }
+}
